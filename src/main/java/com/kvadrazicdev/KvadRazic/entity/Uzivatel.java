@@ -27,8 +27,10 @@ public class Uzivatel implements UserDetails {
     private String Email;
     @NotBlank(message = "Vyplňte prosím pole Telefonní číslo")
     private String TelCislo;
+    @NotBlank(message = "Vyplňte prosím pole Heslo")
     private String Heslo;
     private String Role;
+    @OneToMany(mappedBy = "uzivatel", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Pujcka> Pujcky = new ArrayList<>();
 
 
