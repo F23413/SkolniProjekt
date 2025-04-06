@@ -15,6 +15,6 @@ public class FilmDTO {
     private BigDecimal CenaFilmu;
     private String ObrazekFilmu;
     private String PopisFilmu;
-    private List<Pujcka> Pujcky;
+    private List<PujckaDTO> Pujcky;
 
 }

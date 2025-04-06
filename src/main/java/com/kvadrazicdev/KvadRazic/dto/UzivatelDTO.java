@@ -17,5 +17,5 @@ public class UzivatelDTO {
     private String Email;
     private String TelCislo;
     private String Role;
-    private List<Pujcka> Pujcky = new ArrayList<>();
+    private List<PujckaDTO> Pujcky = new ArrayList<>();
 }
