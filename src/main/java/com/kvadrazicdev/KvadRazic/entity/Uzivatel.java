@@ -38,6 +38,11 @@ public class Uzivatel implements UserDetails {
     }
 
     @Override
+    public String getPassword() {
+        return null;
+    }
+
+    @Override
     public String getUsername() {
         return Email;
     }
