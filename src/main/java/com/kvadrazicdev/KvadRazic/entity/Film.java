@@ -14,24 +14,25 @@ import java.util.List;
 public class Film {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
-    private String NazevFilmu;
-    private String ZanrFilmu;
-    private BigDecimal CenaFilmu;
-    private String ObrazekFilmu;
-    private String PopisFilmu;
-    private List<Pujcka> Pujcky = new ArrayList<>();
+    private String nazevFilmu;
+    private String zanrFilmu;
+    private BigDecimal cenaFilmu;
+    private String obrazekFilmu;
+    private String popisFilmu;
+    @OneToMany(mappedBy = "filmPujceny", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Pujcka> pujcky = new ArrayList<>();
 
     @Override
     public String toString() {
         return "Film{" +
-                "Id=" + Id +
-                ", NazevFilmu='" + NazevFilmu + '\'' +
-                ", ZanrFilmu='" + ZanrFilmu + '\'' +
-                ", CenaFilmu=" + CenaFilmu +
-                ", ObrazekFilmu='" + ObrazekFilmu + '\'' +
-                ", PopisFilmu='" + PopisFilmu + '\'' +
+                "Id=" + id +
+                ", NazevFilmu='" + nazevFilmu + '\'' +
+                ", ZanrFilmu='" + zanrFilmu + '\'' +
+                ", CenaFilmu=" + cenaFilmu +
+                ", ObrazekFilmu='" + obrazekFilmu + '\'' +
+                ", PopisFilmu='" + popisFilmu + '\'' +
                 '}';
     }
 }

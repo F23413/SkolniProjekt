@@ -10,11 +10,11 @@ import java.time.LocalDate;
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PujckaDTO {
-    private Long Id;
-    private LocalDate DatumPujceni;
-    private LocalDate DatumVraceni;
-    private int PocetMomentalnePujcenychFilmu;
-    private String KodPotvrzeniZapujceni;
-    private UzivatelDTO UzivatelPujcuje;
-    private FilmDTO FilmPujceny;
+    private Long id;
+    private LocalDate datumPujceni;
+    private LocalDate datumVraceni;
+    private int pocetMomentalnePujcenychFilmu;
+    private String kodPotvrzeniZapujceni;
+    private UzivatelDTO uzivatelPujcuje;
+    private FilmDTO filmPujceny;
 }

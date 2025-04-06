@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 public class ZadostPrihlaseni {
     @NotBlank(message = "Email je nezbytný")
-    private String Email;
+    private String email;
     @NotBlank(message = "Heslo je nezbytné")
-    private String Heslo;
+    private String heslo;
 }

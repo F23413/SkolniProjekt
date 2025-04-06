@@ -18,25 +18,25 @@ public class Uzivatel implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
     @NotBlank(message = "Vyplňte prosím pole Jméno")
-    private String Jmeno;
+    private String jmeno;
     @NotBlank(message = "Vyplňte prosím pole Email")
     @Column(unique = true)
-    private String Email;
+    private String email;
     @NotBlank(message = "Vyplňte prosím pole Telefonní číslo")
-    private String TelCislo;
+    private String telCislo;
     @NotBlank(message = "Vyplňte prosím pole Heslo")
-    private String Heslo;
-    private String Role;
-    @OneToMany(mappedBy = "uzivatel", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Pujcka> Pujcky = new ArrayList<>();
+    private String heslo;
+    private String role;
+    @OneToMany(mappedBy = "uzivatelPujcuje", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Pujcka> pujcky = new ArrayList<>();
 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(Role));
+        return List.of(new SimpleGrantedAuthority(role));
     }
 
     @Override
@@ -46,7 +46,7 @@ public class Uzivatel implements UserDetails {
 
     @Override
     public String getUsername() {
-        return Email;
+        return email;
     }
 
     @Override

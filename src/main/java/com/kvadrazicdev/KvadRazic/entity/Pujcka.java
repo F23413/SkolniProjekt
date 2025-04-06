@@ -14,33 +14,33 @@ import java.time.LocalDate;
 public class Pujcka {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
     @NotNull(message = "Datum půjčení je nezbytné")
-    private LocalDate DatumPujceni;
+    private LocalDate datumPujceni;
     @Future(message = "Datum vrácení musí být v budoucnu")
-    private LocalDate DatumVraceni;
+    private LocalDate datumVraceni;
 
     @Min(value = 0, message = "Počet zapůjčených filmů nesmí být menší než 0")
-    private int PocetMomentalnePujcenychFilmu;
-    private String KodPotvrzeniZapujceni;
+    private int pocetMomentalnePujcenychFilmu;
+    private String kodPotvrzeniZapujceni;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_uzivatele")
-    private Uzivatel UzivatelPujcuje;
+    private Uzivatel uzivatelPujcuje;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_filmu")
-    private Film FilmPujceny;
+    private Film filmPujceny;
 
     @Override
     public String toString() {
         return "Pujcka{" +
-                "Id=" + Id +
-                ", DatumPujceni=" + DatumPujceni +
-                ", DatumVraceni=" + DatumVraceni +
-                ", PocetMomentalnePujcenychFilmu=" + PocetMomentalnePujcenychFilmu +
-                ", KodPotvrzeniZapujceni='" + KodPotvrzeniZapujceni + '\'' +
+                "Id=" + id +
+                ", DatumPujceni=" + datumPujceni +
+                ", DatumVraceni=" + datumVraceni +
+                ", PocetMomentalnePujcenychFilmu=" + pocetMomentalnePujcenychFilmu +
+                ", KodPotvrzeniZapujceni='" + kodPotvrzeniZapujceni + '\'' +
                 '}';
     }
 }

@@ -9,18 +9,18 @@ import java.util.List;
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Odpoved {
-    private int KodStavu;
-    private String Zprava;
+    private int kodStavu;
+    private String zprava;
 
-    private String Token;
-    private String Role;
-    private String CasExpirace;
-    private String KodPotvrzeniZapujceni;
+    private String token;
+    private String role;
+    private String casExpirace;
+    private String kodPotvrzeniZapujceni;
 
-    private UzivatelDTO UzivatelPujcuje;
-    private FilmDTO FilmPujceny;
-    private PujckaDTO OPujcce;
-    private List<UzivatelDTO> SeznamUzivatelu;
-    private List<PujckaDTO> SeznamPujcek;
-    private List<FilmDTO> SeznamFilmu;
+    private UzivatelDTO uzivatelPujcuje;
+    private FilmDTO filmPujceny;
+    private PujckaDTO oPujcce;
+    private List<UzivatelDTO> seznamUzivatelu;
+    private List<PujckaDTO> seznamPujcek;
+    private List<FilmDTO> seznamFilmu;
 }

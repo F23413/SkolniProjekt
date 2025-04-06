@@ -10,12 +10,12 @@ import java.util.List;
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class FilmDTO {
-    private Long Id;
-    private String NazevFilmu;
-    private String ZanrFilmu;
-    private BigDecimal CenaFilmu;
-    private String ObrazekFilmu;
-    private String PopisFilmu;
-    private List<PujckaDTO> Pujcky;
+    private Long id;
+    private String nazevFilmu;
+    private String zanrFilmu;
+    private BigDecimal cenaFilmu;
+    private String obrazekFilmu;
+    private String popisFilmu;
+    private List<PujckaDTO> pujcky;
 
 }

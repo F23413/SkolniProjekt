@@ -12,10 +12,10 @@ import java.util.List;
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UzivatelDTO {
-    private Long Id;
-    private String Jmeno;
-    private String Email;
-    private String TelCislo;
-    private String Role;
-    private List<PujckaDTO> Pujcky = new ArrayList<>();
+    private Long id;
+    private String jmeno;
+    private String email;
+    private String telCislo;
+    private String role;
+    private List<PujckaDTO> pujcky = new ArrayList<>();
 }
