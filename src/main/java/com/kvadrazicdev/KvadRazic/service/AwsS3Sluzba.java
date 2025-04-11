@@ -12,5 +12,5 @@ public class AwsS3Sluzba {
 
     @Value("${aws.s3.secret.key}")
     private String awsS3SecretKey;
-    //secret
+    //secret push
 }
