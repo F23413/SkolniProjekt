@@ -8,6 +8,6 @@ import java.util.Optional;
 
 public interface PujckaRepository extends JpaRepository<Pujcka, Long> {
     List<Pujcka> findByFilmPujceny_Id(Long filmId);
-    List<Pujcka> findByKodPotvrzeniZapujceni(String kodPotvrzeniZapujceni);
+    Optional<Pujcka> findByKodPotvrzeniZapujceni(String kodPotvrzeniZapujceni);
     List<Pujcka> findByUzivatelPujcuje_Id(Long uzivatelId);
 }

@@ -50,7 +50,7 @@ private UzivatelRepository uzivatelRepository;
         catch (Exception e){
 
             odpoved.setKodStavu(500); // server error
-            odpoved.setZprava("Nastala chyba během registrace uživatele " + e.getMessage());
+            odpoved.setZprava("Nastala chyba během registrace uživatele: " + e.getMessage());
         }
         return odpoved;
     }
@@ -72,7 +72,7 @@ private UzivatelRepository uzivatelRepository;
             odpoved.setZprava(e.getMessage());
         }catch (Exception e){
             odpoved.setKodStavu(500); // server error
-            odpoved.setZprava("Nastala chyba během přihlašování uživatele " + e.getMessage());
+            odpoved.setZprava("Nastala chyba během přihlašování uživatele: " + e.getMessage());
 
         }
         return odpoved;
@@ -90,7 +90,7 @@ private UzivatelRepository uzivatelRepository;
 
         }catch (Exception e){
             odpoved.setKodStavu(500); // server error
-            odpoved.setZprava("Nastala chyba při hledání uživatelů " + e.getMessage());
+            odpoved.setZprava("Nastala chyba při hledání uživatelů: " + e.getMessage());
         }
         return odpoved;
     }
@@ -109,7 +109,7 @@ private UzivatelRepository uzivatelRepository;
             odpoved.setZprava(e.getMessage());}
         catch (Exception e){
             odpoved.setKodStavu(500); // server error
-            odpoved.setZprava("Nastala chyba při hledání historie " + e.getMessage());
+            odpoved.setZprava("Nastala chyba při hledání historie: " + e.getMessage());
         }
         return odpoved;
     }
@@ -127,7 +127,7 @@ private UzivatelRepository uzivatelRepository;
             odpoved.setZprava(e.getMessage());}
         catch (Exception e){
             odpoved.setKodStavu(500); // server error
-            odpoved.setZprava("Nastala chyba při odstraňování uživatele " + e.getMessage());
+            odpoved.setZprava("Nastala chyba při odstraňování uživatele: " + e.getMessage());
         }
         return odpoved;
     }
@@ -146,7 +146,7 @@ private UzivatelRepository uzivatelRepository;
             odpoved.setZprava(e.getMessage());}
         catch (Exception e){
             odpoved.setKodStavu(500); // server error
-            odpoved.setZprava("Nastala chyba při hledání historie " + e.getMessage());
+            odpoved.setZprava("Nastala chyba při hledání historie: " + e.getMessage());
         }
         return odpoved;
     }
@@ -165,7 +165,7 @@ private UzivatelRepository uzivatelRepository;
             odpoved.setZprava(e.getMessage());}
         catch (Exception e){
             odpoved.setKodStavu(500); // server error
-            odpoved.setZprava("Nastala chyba při hledání historie " + e.getMessage());
+            odpoved.setZprava("Nastala chyba při hledání historie: " + e.getMessage());
         }
         return odpoved;
     }

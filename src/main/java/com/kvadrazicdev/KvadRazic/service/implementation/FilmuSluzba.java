@@ -44,7 +44,7 @@ public class FilmuSluzba implements IFilmuSluzba {
             odpoved.setFilmPujceny(filmDTO);
         }catch (Exception e){
             odpoved.setKodStavu(500); // server error
-            odpoved.setZprava("Nastala chyba během přidávání filmu " + e.getMessage());
+            odpoved.setZprava("Nastala chyba během přidávání filmu: " + e.getMessage());
         }
         return odpoved;
     }
@@ -67,7 +67,7 @@ public class FilmuSluzba implements IFilmuSluzba {
             odpoved.setSeznamFilmu(filmDTOList);
         }catch (Exception e){
             odpoved.setKodStavu(500); // server error
-            odpoved.setZprava("Nastala chyba během hledání filmů " + e.getMessage());
+            odpoved.setZprava("Nastala chyba během hledání filmů: " + e.getMessage());
         }
         return odpoved;
     }
@@ -86,7 +86,7 @@ public class FilmuSluzba implements IFilmuSluzba {
             odpoved.setZprava(e.getMessage());
         }catch (Exception e){
             odpoved.setKodStavu(500); // server error
-            odpoved.setZprava("Nastala chyba během odstraňování filmu " + e.getMessage());
+            odpoved.setZprava("Nastala chyba během odstraňování filmu: " + e.getMessage());
         }
         return odpoved;
     }
@@ -116,7 +116,7 @@ public class FilmuSluzba implements IFilmuSluzba {
             odpoved.setZprava(e.getMessage());
         }catch (Exception e){
             odpoved.setKodStavu(500); // server error
-            odpoved.setZprava("Nastala chyba během ukládání změn filmu " + e.getMessage());
+            odpoved.setZprava("Nastala chyba během ukládání změn filmu: " + e.getMessage());
         }
         return odpoved;
     }
@@ -136,7 +136,7 @@ public class FilmuSluzba implements IFilmuSluzba {
             odpoved.setZprava(e.getMessage());
         }catch (Exception e){
             odpoved.setKodStavu(500); // server error
-            odpoved.setZprava("Nastala chyba během hledání filmu " + e.getMessage());
+            odpoved.setZprava("Nastala chyba během hledání filmu: " + e.getMessage());
         }
         return odpoved;
     }
@@ -152,7 +152,7 @@ public class FilmuSluzba implements IFilmuSluzba {
             odpoved.setSeznamFilmu(filmDTOList);
         }catch (Exception e){
             odpoved.setKodStavu(500); // server error
-            odpoved.setZprava("Nastala chyba během hledání filmu " + e.getMessage());
+            odpoved.setZprava("Nastala chyba během hledání filmu: " + e.getMessage());
         }
         return odpoved;
     }
@@ -173,7 +173,7 @@ public class FilmuSluzba implements IFilmuSluzba {
             odpoved.setZprava(e.getMessage());
         }catch (Exception e){
             odpoved.setKodStavu(500); // server error
-            odpoved.setZprava("Nastala chyba během hledání filmů " + e.getMessage());
+            odpoved.setZprava("Nastala chyba během hledání filmů: " + e.getMessage());
         }
         return odpoved;
     }
