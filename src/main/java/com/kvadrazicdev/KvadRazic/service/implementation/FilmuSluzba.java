@@ -27,13 +27,14 @@ public class FilmuSluzba implements IFilmuSluzba {
     @Autowired
     private AwsS3Sluzba awsS3Sluzba;
     @Override
-    public Odpoved pridejNovyFilm(MultipartFile obrazekFilmu, String zanrFilmu, BigDecimal cenaFilmu, String popisFilmu) {
+    public Odpoved pridejNovyFilm(MultipartFile obrazekFilmu, String nazevFilmu, String zanrFilmu, BigDecimal cenaFilmu, String popisFilmu) {
         Odpoved odpoved = new Odpoved();
 
         try{
             String obrazekUrl = awsS3Sluzba.ulozImgDoS3(obrazekFilmu);
             Film film = new Film();
             film.setObrazekFilmu(obrazekUrl);
+            film.setNazevFilmu(nazevFilmu);
             film.setZanrFilmu(zanrFilmu);
             film.setCenaFilmu(cenaFilmu);
             film.setPopisFilmu(popisFilmu);
@@ -92,7 +93,7 @@ public class FilmuSluzba implements IFilmuSluzba {
     }
 
     @Override
-    public Odpoved updateFilm(Long filmId, String zanrFilmu, BigDecimal cenaFilmu, MultipartFile obrazekFilmu, String popisFilmu) {
+    public Odpoved updateFilm(Long filmId, String nazevFilmu, String zanrFilmu, BigDecimal cenaFilmu, MultipartFile obrazekFilmu, String popisFilmu) {
         Odpoved odpoved = new Odpoved();
         try{
             String obrazekUrl = null;
@@ -100,6 +101,7 @@ public class FilmuSluzba implements IFilmuSluzba {
                 obrazekUrl = awsS3Sluzba.ulozImgDoS3(obrazekFilmu);
             }
             Film film = filmRepository.findById(filmId).orElseThrow(()-> new Vyjimka("Film nenalezen"));
+            if(nazevFilmu != null) film.setNazevFilmu(nazevFilmu);
             if(zanrFilmu != null) film.setZanrFilmu(zanrFilmu);
             if(popisFilmu != null) film.setPopisFilmu(popisFilmu);
             if(cenaFilmu != null) film.setCenaFilmu(cenaFilmu);

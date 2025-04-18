@@ -8,11 +8,11 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface IFilmuSluzba {
-    Odpoved pridejNovyFilm(MultipartFile obrazekFilmu, String zanrFilmu, BigDecimal cenaFilmu, String popisFilmu);
+    Odpoved pridejNovyFilm(MultipartFile obrazekFilmu, String nazevFilmu, String zanrFilmu, BigDecimal cenaFilmu, String popisFilmu);
     Odpoved getVsechnyFilmy();
     List<String> getVsechnyZanry();
     Odpoved odstranFilm(Long filmId);
-    Odpoved updateFilm(Long filmId, String zanrFilmu, BigDecimal cenaFilmu, MultipartFile obrazekFilmu, String popisFilmu);
+    Odpoved updateFilm(Long filmId, String nazevFilmu, String zanrFilmu, BigDecimal cenaFilmu, MultipartFile obrazekFilmu, String popisFilmu);
     Odpoved getFilmDleId(Long filmId);
     Odpoved getMozneFilmyDleDataAZanru(LocalDate datumPujceni, LocalDate datumVraceni, String zanrFilmu);
     Odpoved getVsechnyMozneFilmy();

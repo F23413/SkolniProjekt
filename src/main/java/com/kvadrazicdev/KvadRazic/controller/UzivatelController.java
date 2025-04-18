@@ -7,10 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/uzivatele")
@@ -31,7 +28,7 @@ public class UzivatelController {
         return ResponseEntity.status(odpoved.getKodStavu()).body(odpoved);
     }
 
-    @GetMapping("/delete/{uzivatelId}")
+    @DeleteMapping("/delete/{uzivatelId}")
     public ResponseEntity<Odpoved> odstranUzivatele(@PathVariable("uzivatelId") String uzivatelId){
         Odpoved odpoved = uzivateleSluzba.odstranUzivatele(uzivatelId);
         return ResponseEntity.status(odpoved.getKodStavu()).body(odpoved);
