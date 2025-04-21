@@ -12,6 +12,62 @@ import java.util.List;
 @Entity
 @Table(name = "filmy")
 public class Film {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNazevFilmu() {
+        return nazevFilmu;
+    }
+
+    public void setNazevFilmu(String nazevFilmu) {
+        this.nazevFilmu = nazevFilmu;
+    }
+
+    public String getZanrFilmu() {
+        return zanrFilmu;
+    }
+
+    public void setZanrFilmu(String zanrFilmu) {
+        this.zanrFilmu = zanrFilmu;
+    }
+
+    public BigDecimal getCenaFilmu() {
+        return cenaFilmu;
+    }
+
+    public void setCenaFilmu(BigDecimal cenaFilmu) {
+        this.cenaFilmu = cenaFilmu;
+    }
+
+    public String getObrazekFilmu() {
+        return obrazekFilmu;
+    }
+
+    public void setObrazekFilmu(String obrazekFilmu) {
+        this.obrazekFilmu = obrazekFilmu;
+    }
+
+    public String getPopisFilmu() {
+        return popisFilmu;
+    }
+
+    public void setPopisFilmu(String popisFilmu) {
+        this.popisFilmu = popisFilmu;
+    }
+
+    public List<Pujcka> getPujcky() {
+        return pujcky;
+    }
+
+    public void setPujcky(List<Pujcka> pujcky) {
+        this.pujcky = pujcky;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

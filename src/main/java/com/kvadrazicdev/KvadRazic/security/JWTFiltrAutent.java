@@ -1,5 +1,6 @@
 package com.kvadrazicdev.KvadRazic.security;
 
+import com.kvadrazicdev.KvadRazic.service.VlastniUserDetailsService;
 import com.kvadrazicdev.KvadRazic.utils.JWTUtils;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -24,7 +25,7 @@ public class JWTFiltrAutent extends OncePerRequestFilter {
     @Autowired
     private JWTUtils jwtUtils;
     @Autowired
-    private CachingUserDetailsService cachingUserDetailsService;
+    private VlastniUserDetailsService vlastniUserDetailsService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -40,7 +41,7 @@ public class JWTFiltrAutent extends OncePerRequestFilter {
         jwtToken = zahlaviAutor.substring(7);
         emailUzivatele = jwtUtils.extrahujJmenoUzivatele(jwtToken);
         if (emailUzivatele != null && SecurityContextHolder.getContext().getAuthentication() == null){
-            UserDetails userDetails = cachingUserDetailsService.loadUserByUsername(emailUzivatele);
+            UserDetails userDetails = vlastniUserDetailsService.loadUserByUsername(emailUzivatele);
             if(jwtUtils.jeTokenValidni(jwtToken, userDetails)){
                 SecurityContext securityContext = SecurityContextHolder.createEmptyContext();
                 UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());

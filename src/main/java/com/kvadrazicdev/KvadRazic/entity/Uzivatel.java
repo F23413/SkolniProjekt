@@ -68,4 +68,60 @@ public class Uzivatel implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getJmeno() {
+        return jmeno;
+    }
+
+    public void setJmeno(String jmeno) {
+        this.jmeno = jmeno;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTelCislo() {
+        return telCislo;
+    }
+
+    public void setTelCislo(String telCislo) {
+        this.telCislo = telCislo;
+    }
+
+    public String getHeslo() {
+        return heslo;
+    }
+
+    public void setHeslo(String heslo) {
+        this.heslo = heslo;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public List<Pujcka> getPujcky() {
+        return pujcky;
+    }
+
+    public void setPujcky(List<Pujcka> pujcky) {
+        this.pujcky = pujcky;
+    }
 }
