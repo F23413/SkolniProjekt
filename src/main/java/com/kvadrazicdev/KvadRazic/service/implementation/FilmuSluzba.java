@@ -27,7 +27,7 @@ public class FilmuSluzba implements IFilmuSluzba {
     @Autowired
     private AwsS3Sluzba awsS3Sluzba;
     @Override
-    public Odpoved pridejNovyFilm(MultipartFile obrazekFilmu, String nazevFilmu, String zanrFilmu, BigDecimal cenaFilmu, String popisFilmu) {
+    public Odpoved pridejNovyFilm(MultipartFile obrazekFilmu, BigDecimal cenaFilmu, String zanrFilmu, String nazevFilmu, String popisFilmu) {
         Odpoved odpoved = new Odpoved();
 
         try{

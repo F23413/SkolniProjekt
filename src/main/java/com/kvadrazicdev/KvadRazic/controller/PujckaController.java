@@ -15,7 +15,7 @@ public class PujckaController {
     @Autowired
     private IPujckySluzba pujckySluzba;
 
-    @PostMapping("pujcka-knihy/{filmId}/{uzivatelId}")
+    @PostMapping("pujcka-filmu/{filmId}/{uzivatelId}")
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('UZIVATEL')")
     public ResponseEntity<Odpoved> ulozPujcky(@PathVariable Long filmId, @PathVariable Long uzivatelId, @RequestBody Pujcka pujckyZadost){
         Odpoved odpoved = pujckySluzba.ulozPujcku(filmId, uzivatelId, pujckyZadost);

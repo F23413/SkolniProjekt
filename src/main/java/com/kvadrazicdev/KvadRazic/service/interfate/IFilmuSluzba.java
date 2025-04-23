@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface IFilmuSluzba {
-    Odpoved pridejNovyFilm(MultipartFile obrazekFilmu, String nazevFilmu, String zanrFilmu, BigDecimal cenaFilmu, String popisFilmu);
+    Odpoved pridejNovyFilm(MultipartFile obrazekFilmu, BigDecimal cenaFilmu, String zanrFilmu, String nazevFilmu,  String popisFilmu);
     Odpoved getVsechnyFilmy();
     List<String> getVsechnyZanry();
     Odpoved odstranFilm(Long filmId);

@@ -12,6 +12,17 @@ import java.util.List;
 @Entity
 @Table(name = "filmy")
 public class Film {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nazevFilmu;
+    private String zanrFilmu;
+    private BigDecimal cenaFilmu;
+    private String obrazekFilmu;
+    private String popisFilmu;
+    @OneToMany(mappedBy = "filmPujceny", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Pujcka> pujcky = new ArrayList<>();
+
     public Long getId() {
         return id;
     }
@@ -67,18 +78,6 @@ public class Film {
     public void setPujcky(List<Pujcka> pujcky) {
         this.pujcky = pujcky;
     }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String nazevFilmu;
-    private String zanrFilmu;
-    private BigDecimal cenaFilmu;
-    private String obrazekFilmu;
-    private String popisFilmu;
-    @OneToMany(mappedBy = "filmPujceny", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Pujcka> pujcky = new ArrayList<>();
 
     @Override
     public String toString() {

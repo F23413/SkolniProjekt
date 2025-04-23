@@ -43,7 +43,8 @@ private UzivatelRepository uzivatelRepository;
             UzivatelDTO uzivatelDTO = Utils.mapUzivatelEntituNaUzivatelDTO(ulozenyUzivatel);
             odpoved.setKodStavu(200);
             odpoved.setUzivatelPujcuje(uzivatelDTO);
-        }catch (Vyjimka e){
+        }
+        catch (Vyjimka e){
             odpoved.setKodStavu(400); // bad reqest
             odpoved.setZprava(e.getMessage());
         }

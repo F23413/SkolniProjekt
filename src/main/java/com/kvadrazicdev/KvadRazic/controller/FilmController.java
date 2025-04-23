@@ -27,17 +27,17 @@ public class FilmController {
     public ResponseEntity<Odpoved> pridejNovyFilm(
             @RequestParam(value = "foto", required = false)MultipartFile foto,
             @RequestParam(value = "cenaFilmu", required = false)BigDecimal cenaFilmu,
-            @RequestParam(value = "nazevFilmu", required = false)String nazevFilmu,
             @RequestParam(value = "zanrFilmu", required = false)String zanrFilmu,
+            @RequestParam(value = "nazevFilmu", required = false)String nazevFilmu,
             @RequestParam(value = "popisFilmu", required = false)String popisFilmu
             ){
         if(foto == null || foto.isEmpty() || cenaFilmu == null || nazevFilmu.isBlank() ||  zanrFilmu == null || zanrFilmu.isBlank() || popisFilmu.isBlank()){
             Odpoved odpoved = new Odpoved();
             odpoved.setKodStavu(400);
-            odpoved.setZprava("Ujistěte se, že jsou všechny pole vyplněny(foto, cenaFilmu, nazevFilmu, zanrFilmu, popisFilmu)");
+            odpoved.setZprava("Ujistěte se, že jsou všechny pole vyplněny(foto, cenaFilmu, zanrFilmu, nazevFilmu, popisFilmu)");
             return ResponseEntity.status(odpoved.getKodStavu()).body(odpoved);
         }
-        Odpoved odpoved = filmuSluzba.pridejNovyFilm(foto,zanrFilmu, nazevFilmu, cenaFilmu, popisFilmu);
+        Odpoved odpoved = filmuSluzba.pridejNovyFilm(foto, cenaFilmu, zanrFilmu, nazevFilmu, popisFilmu);
         return ResponseEntity.status(odpoved.getKodStavu()).body(odpoved);
     }
 
