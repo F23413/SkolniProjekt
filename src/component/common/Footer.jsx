@@ -1,7 +1,7 @@
 const FooterComponent = ()=>{
     return(
         <footer>
-            <span className="muj-footer">
+            <span className="my-footer">
                 Kvadrazič | Všechna Práva Vyhrazena &copy; {new Date().getFullYear}
             </span>
         </footer>

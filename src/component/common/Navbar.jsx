@@ -18,7 +18,7 @@ function Navbar(){
 
     return(
         <nav className="navbar">
-            <div className="navbar-znacka">
+            <div className="navbar-brand">
                 <NavLink to="/home">Kvadrazič</NavLink>
             </div>
             <ul className="navbar-ul">

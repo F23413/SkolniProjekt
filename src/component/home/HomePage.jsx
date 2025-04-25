@@ -6,13 +6,13 @@ const HomePage =()=>{
             {/* Záhlaví a banner*/}
             <section>
                 <header className="header-banner">
-                    <img src="./assets/obrazky/YdFsXZgsagfMECEWk7qRTQ.jpg" alt="uvodni obrazek" className="header-obr"/>
+                    <img src="./assets/obrazky/YdFsXZgsagfMECEWk7qRTQ.jpg" alt="uvodni obrazek" className="header-image"/>
                     <div className="overlay"></div>
                     <div className="animace-textu overlay-content">
                         <h1>
                             Vítejte na stránkách serveru <span className="kvadrazic-barva">Kvadrazič</span>
                         </h1><br></br>
-                        <h3>Kde půjčování je snadné sample text</h3>
+                        <h3>Kde půjčování je snadné jako Java.</h3>
                     </div>
                 </header>
             </section>
@@ -22,30 +22,30 @@ const HomePage =()=>{
             {/* Služby */}
             <section className="service-section">
                 <div className="service-card">
-                <img src="" alt="obr 1"/>
+                <img src=".\assets\obrazky\kosmonaut.png" alt="obr 1"/>
                 <div className="service-details">
                     <h3 className="service-title">Jedna věc</h3>
                     <p className="service-description">Popis věci číslo jedna</p>
                 </div>
             </div>
             <div className="service-card">
-                <img src="" alt="obr 2"/>
+                <img src=".\assets\obrazky\kosmonaut.png" alt="obr 2"/>
                 <div className="service-details">
                     <h3 className="service-title">Druhá věc</h3>
                     <p className="service-description">Popis věci číslo dva</p>
                 </div>
             </div>
             <div className="service-card">
-                <img src="" alt="obr 3"/>
+                <img src=".\assets\obrazky\kosmonaut.png" alt="obr 3"/>
                 <div className="service-details">
-                    <h3 className="service-title">třetí věc</h3>
+                    <h3 className="service-title">Třetí věc</h3>
                     <p className="service-description">Popis věci číslo tři</p>
                 </div>
             </div>
             <div className="service-card">
-                <img src="" alt="obr 4"/>
+                <img src=".\assets\obrazky\kosmonaut.png" alt="obr 4"/>
                 <div className="service-details">
-                    <h3 className="service-title">čtvrtá věc</h3>
+                    <h3 className="service-title">Čtvrtá věc</h3>
                     <p className="service-description">Popis věci číslo čtyři</p>
                 </div>
             </div>
