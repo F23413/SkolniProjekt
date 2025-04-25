@@ -171,6 +171,7 @@ export default class ApiService{
         return !!token
     }
 
+    // admin nebo uzivatel mají různé přístupy k jiným věcem
     static isAdmin(){
         const role = localStorage.getItem('role')
         return role === 'ADMIN'
