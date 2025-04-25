@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import HomePage from './component/common/Navbar.jsx'
+import Footer from './component/common/Footer.jsx';
 
 function App() {
   return (
@@ -9,13 +11,10 @@ function App() {
         <p>
           Welcome to the <code>library</code> of your mind.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+        <a href='/App.js'
         >
           My name is Mr. Owl.
+          <Footer/>
         </a>
       </header>
     </div>
