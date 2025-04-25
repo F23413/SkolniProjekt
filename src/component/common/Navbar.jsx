@@ -19,7 +19,7 @@ function Navbar(){
     return(
         <nav className="navbar">
             <div className="navbar-znacka">
-                <NavLink to="/home">Kvadrazic</NavLink>
+                <NavLink to="/home">Kvadrazič</NavLink>
             </div>
             <ul className="navbar-ul">
                 <li><NavLink to="/home" activeClass="active">Domů</NavLink></li>
@@ -32,7 +32,7 @@ function Navbar(){
                 {!isAuthenticated && <li><NavLink to="/login" activeClass="active">Přihlásit se</NavLink></li>}
                 {!isAuthenticated && <li><NavLink to="/registrace" activeClass="active">Registrace</NavLink></li>}
 
-                {!isAuthenticated && <li onClick={handleLogout}>Odhlásit se</li>}
+                {isAuthenticated && <li onClick={handleLogout}>Odhlásit se</li>}
 
             </ul>
         </nav>
