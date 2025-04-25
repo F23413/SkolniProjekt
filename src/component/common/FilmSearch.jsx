@@ -46,7 +46,7 @@ const FilmSearch = ({handleSearchResult}) =>{
           // Zkouška, je-li výsledek úspěšný
           if (response.statusCode === 200) {
             if (response.roomList.length === 0) {
-              showError('Tohoto žánru a datového rozmezí není momentálně k mání.');
+              showError('Film tohoto žánru a datového rozmezí není momentálně k mání.');
               return
             }
             handleSearchResult(response.roomList);
@@ -79,7 +79,7 @@ const FilmSearch = ({handleSearchResult}) =>{
                     />
                 </div>
 
-                <div className="search-label">
+                <div className="search-field">
                     <label>Zanr filmu</label>
                     <select value={zanrFilmu} onChange={(e) => setZanrFilmu(e.target.value)}>
                         <option disabled value="">
@@ -93,7 +93,7 @@ const FilmSearch = ({handleSearchResult}) =>{
                     </select>
                 </div>
                 <button className="home-search-button" onClick={handleInternalSearch}>
-                        Vyhledat Žánr
+                        Vyhledat filmy
                 </button>
             </div>
             {error && <p className="error-message">{error}</p>}

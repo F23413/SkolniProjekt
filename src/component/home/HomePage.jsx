@@ -1,6 +1,12 @@
 import React, {useState} from "react";
+import FilmSearch from "../common/FilmSearch";
 
 const HomePage =()=>{
+    const [filmSearchResults, setFilmSearchResults] = useState([]);
+const handleSearchResult = (vysledky)=>{
+    setFilmSearchResults(vysledky);
+}
+
     return(
         <div className="home">
             {/* Záhlaví a banner*/}
@@ -17,6 +23,8 @@ const HomePage =()=>{
                 </header>
             </section>
             {/* Hledání filmů k půjčení */}
+            <FilmSearch handleSearchResult={handleSearchResult}/>
+
             <h4><a className="view-filmy-home" href="/filmy">Všechny filmy</a></h4>
             <h2 className="home-services">Služby na stránkách serveru <span className="kvadrazic-barva">Kvadrazič</span></h2>
             {/* Služby */}
