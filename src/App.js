@@ -5,6 +5,7 @@ import Footer from './component/common/Footer.jsx';
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './component/common/Navbar.jsx';
+import VsechnyFilmyPage from './component/pujcky_filmu/VsechnyFilmyPage.jsx';
 
 function App() {
   return (
@@ -13,7 +14,9 @@ function App() {
       <Navbar/>
       <div className='content'>
         <Routes>
-        <Route exact path='/home' element={<HomePage></HomePage>}/>
+        <Route exact path='/home' element={<HomePage/>}/>        
+        <Route exact path='/filmy' element={<VsechnyFilmyPage/>}/>
+
         </Routes>
       </div>
       <Footer/>

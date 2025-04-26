@@ -10,7 +10,7 @@ const VsechnyFilmyPage = () => {
     const [zanryFilmu, setZanryFilmu] = useState([]);
     const [zanrVybranehoFilmu, setZanrVybranehoFilmu] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-    const [filmyPerPage] = useState(5);
+    const [filmyPerPage] = useState(4);
 
     //funkce pro handling vyhledaných výsledků
     const handleSearchResult = (vysledky) => {
@@ -44,7 +44,7 @@ const VsechnyFilmyPage = () => {
 
     const handleFilmZanrChange = (e) => {
         setZanrVybranehoFilmu(e.target.value);
-        filtrovaneFilmy(e.target.value);
+        filtrujFilmy(e.target.value);
     };
 
     const filtrujFilmy = (zanr) => {
@@ -68,7 +68,7 @@ const VsechnyFilmyPage = () => {
         <div className="all-filmy">
             <h2>Všechny filmy</h2>
             <div className="all-film-filter-div">
-                <label>Filtrování dle žánru:</label>
+                <label>Filtrování dle žánru: </label>
                 <select value={zanrVybranehoFilmu} onChange={handleFilmZanrChange}>
                     <option value="">Všechny</option>
                     {zanryFilmu.map((zanr)=>(
