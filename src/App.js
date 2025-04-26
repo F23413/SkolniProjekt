@@ -6,6 +6,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './component/common/Navbar.jsx';
 import VsechnyFilmyPage from './component/pujcky_filmu/VsechnyFilmyPage.jsx';
+import MojePujckyPage from './component/pujcky_filmu/MojePujckyPage.jsx';
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
         <Routes>
         <Route exact path='/home' element={<HomePage/>}/>        
         <Route exact path='/filmy' element={<VsechnyFilmyPage/>}/>
-
+        <Route path='/pujcene-filmy' element={<MojePujckyPage/>}/>
         </Routes>
       </div>
       <Footer/>
