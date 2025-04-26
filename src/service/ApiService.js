@@ -83,8 +83,7 @@ export default class ApiService{
     // vypsání všech možných filmů dle dat a žánrů
     static async getVsechnyMozneFilmyDleDataAZanru(datumPujceni, datumVraceni, zanrFilmu){
         const odpoved = await axios.get(
-            `${this.BASE_URL}/filmy/mozne-filmy-dle-data-a-zanru?datumPujceni=${datumPujceni}
-            &datumVraceni=${datumVraceni}&zanrFilmu=${zanrFilmu}`
+            `${this.BASE_URL}/filmy/mozne-filmy-dle-data-a-zanru?datumPujceni=${datumPujceni}&datumVraceni=${datumVraceni}&zanrFilmu=${zanrFilmu}`
         )
         return odpoved.data
     }

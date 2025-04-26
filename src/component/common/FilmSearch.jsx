@@ -20,40 +20,47 @@ const FilmSearch = ({handleSearchResult}) =>{
             }catch (err){
                 console.log(err.message);
             }
-        }
+        };
         fetchZanryFilmu();
     }, []);
 
     const showError = (message, timeOut = 5000) =>{
         setError(message);
         setTimeout(()=>{
-            setError('f');
-        }, timeOut)
+            setError('');
+        }, timeOut);
     };
-
     const handleInternalSearch = async () => {
         if (!startDatum || !endDatum || !zanrFilmu) {
           showError('Prosím vyberte všechna pole.');
           return false;
         }
+        const formatDate = (date) => {
+            if (!date) return null;
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0'); // měsíce jsou 0–11
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+          };
         try {
           // Konvertuje start/endDatum do požadovaného formátu
-          const formattedStartDatum = startDatum ? startDatum.toISOString().split('T')[0] : null;
-          const formattedEndDatum = endDatum ? endDatum.toISOString().split('T')[0] : null;
+          const formattedStartDatum = formatDate(startDatum);
+          const formattedEndDatum = formatDate(endDatum);
           // Volá API na nalezení možných filmů
-          const response = await ApiService.getAvailableRoomsByDatumAndType(formattedStartDatum, formattedEndDatum, zanrFilmu);
+          const response = await ApiService.getVsechnyMozneFilmyDleDataAZanru(formattedStartDatum, formattedEndDatum, zanrFilmu);
     
           // Zkouška, je-li výsledek úspěšný
-          if (response.statusCode === 200) {
-            if (response.roomList.length === 0) {
+          if (response.kodStavu === 200) {
+            if (response.seznamFilmu.length === 0) {
               showError('Film tohoto žánru a datového rozmezí není momentálně k mání.');
               return
             }
-            handleSearchResult(response.roomList);
+            handleSearchResult(response.seznamFilmu);
             setError('');
           }
         } catch (error) {
-          showError("Nastala neznámá chyba: " + error.response.data.message);
+          showError("Nastala neznámá chyba: " + error.response.zprava);
+          //showError("Nastala neznámá chyba." + formatDate(startDatum));
         }
       };
 

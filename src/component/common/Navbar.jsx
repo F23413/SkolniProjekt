@@ -22,15 +22,15 @@ function Navbar(){
                 <NavLink to="/home">Kvadrazič</NavLink>
             </div>
             <ul className="navbar-ul">
-                <li><NavLink to="/home" activeClass="active">Domů</NavLink></li>
-                <li><NavLink to="/filmy" activeClass="active">Filmy</NavLink></li>
-                <li><NavLink to="/pujcene-filmy" activeClass="active">Moje půjčky</NavLink></li>
+                <li><NavLink to="/home" activeclassname="active">Domů</NavLink></li>
+                <li><NavLink to="/filmy" activeclassname="active">Filmy</NavLink></li>
+                <li><NavLink to="/pujcene-filmy" activeclassname="active">Moje půjčky</NavLink></li>
 
-                { isUzivatel && <li><NavLink to="/profil" activeClass="active">Můj profil</NavLink></li>}
-                { isAdmin && <li><NavLink to="/admin" activeClass="active">Admin</NavLink></li>}
+                { isUzivatel && <li><NavLink to="/profil" activeclassname="active">Můj profil</NavLink></li>}
+                { isAdmin && <li><NavLink to="/admin" activeclassname="active">Admin</NavLink></li>}
 
-                {!isAuthenticated && <li><NavLink to="/login" activeClass="active">Přihlásit se</NavLink></li>}
-                {!isAuthenticated && <li><NavLink to="/registrace" activeClass="active">Registrace</NavLink></li>}
+                {!isAuthenticated && <li><NavLink to="/login" activeclassname="active">Přihlásit se</NavLink></li>}
+                {!isAuthenticated && <li><NavLink to="/registrace" activeclassname="active">Registrace</NavLink></li>}
 
                 {isAuthenticated && <li onClick={handleLogout}>Odhlásit se</li>}
 

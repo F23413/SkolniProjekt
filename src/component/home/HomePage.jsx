@@ -1,11 +1,14 @@
 import React, {useState} from "react";
 import FilmSearch from "../common/FilmSearch";
+import FilmResult from "../common/FilmResult";
+
 
 const HomePage =()=>{
     const [filmSearchResults, setFilmSearchResults] = useState([]);
+
 const handleSearchResult = (vysledky)=>{
     setFilmSearchResults(vysledky);
-}
+};
 
     return(
         <div className="home">
@@ -14,16 +17,17 @@ const handleSearchResult = (vysledky)=>{
                 <header className="header-banner">
                     <img src="./assets/obrazky/YdFsXZgsagfMECEWk7qRTQ.jpg" alt="uvodni obrazek" className="header-image"/>
                     <div className="overlay"></div>
-                    <div className="animace-textu overlay-content">
+                    <div className="animated-texts overlay-content">
                         <h1>
                             Vítejte na stránkách serveru <span className="kvadrazic-barva">Kvadrazič</span>
-                        </h1><br></br>
+                        </h1><br/>
                         <h3>Kde půjčování je snadné jako Java.</h3>
                     </div>
                 </header>
             </section>
             {/* Hledání filmů k půjčení */}
             <FilmSearch handleSearchResult={handleSearchResult}/>
+            <FilmResult filmSearchResults={filmSearchResults}/>
 
             <h4><a className="view-filmy-home" href="/filmy">Všechny filmy</a></h4>
             <h2 className="home-services">Služby na stránkách serveru <span className="kvadrazic-barva">Kvadrazič</span></h2>
