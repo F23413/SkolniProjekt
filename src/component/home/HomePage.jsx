@@ -36,29 +36,29 @@ const handleSearchResult = (vysledky)=>{
                 <div className="service-card">
                 <img src=".\assets\obrazky\kosmonaut.png" alt="obr 1"/>
                 <div className="service-details">
-                    <h3 className="service-title">Jedna věc</h3>
-                    <p className="service-description">Popis věci číslo jedna</p>
+                    <h3 className="service-title">Široká nabídka filmů</h3>
+                    <p className="service-description">Novinky, klasiky, různé žánry (komedie, horory, sci-fi, ...)</p>
                 </div>
             </div>
             <div className="service-card">
                 <img src=".\assets\obrazky\kosmonaut.png" alt="obr 2"/>
                 <div className="service-details">
-                    <h3 className="service-title">Druhá věc</h3>
-                    <p className="service-description">Popis věci číslo dva</p>
+                    <h3 className="service-title">Snadné půjčení a vrácení</h3>
+                    <p className="service-description">Jasné podmínky, jednoduchý proces půjčení i vrácení</p>
                 </div>
             </div>
             <div className="service-card">
                 <img src=".\assets\obrazky\kosmonaut.png" alt="obr 3"/>
                 <div className="service-details">
-                    <h3 className="service-title">Třetí věc</h3>
-                    <p className="service-description">Popis věci číslo tři</p>
+                    <h3 className="service-title">Půjčovné za rozumnou cenu</h3>
+                    <p className="service-description">Možnost slev, předplatného nebo balíčků</p>
                 </div>
             </div>
             <div className="service-card">
                 <img src=".\assets\obrazky\kosmonaut.png" alt="obr 4"/>
                 <div className="service-details">
-                    <h3 className="service-title">Čtvrtá věc</h3>
-                    <p className="service-description">Popis věci číslo čtyři</p>
+                    <h3 className="service-title">Zákaznická podpora</h3>
+                    <p className="service-description">Rychlá pomoc, kdyby něco nefungovalo</p>
                 </div>
             </div>
 
