@@ -13,7 +13,7 @@ const UpravaPujcekPage = () => {
         const fetchDetailyPujcky = async () => {
             try {
                 const odpoved = await ApiService.getPujckuDleKoduPotvrzeni(kodPujcky);
-                setDetailyPujcky(odpoved.pujcka);
+                setDetailyPujcky(odpoved.oPujcce);
             } catch (error) {
                 setError(error.zprava);
             }
@@ -47,6 +47,7 @@ const UpravaPujcekPage = () => {
     return (
         <div className="find-pujcka-page">
             <h2>Booking Detail</h2>
+            
             {error && <p className='error-message'>{error}</p>}
             {success && <p className='success-message'>{success}</p>}
             {detailyPujcky && (
@@ -56,7 +57,7 @@ const UpravaPujcekPage = () => {
                     <p>Datum půjčení: {detailyPujcky.datumPujceni}</p>
                     <p>Datum vrácení: {detailyPujcky.datumVraceni}</p>
                     <p>Počet zapůjčených filmů: {detailyPujcky.pocetMomentalnePujcenychFilmu}</p>
-                    <p>Email: {detailyPujcky.guestEmail}</p>
+                    {/* <p>Email: {detailyPujcky.guestEmail}</p>
                     <br />
                     <hr />
                     <br />
@@ -75,7 +76,7 @@ const UpravaPujcekPage = () => {
                         <p> Cena filmu: ${detailyPujcky.film.cenaFilmu}</p>
                         <p> Popis filmu: {detailyPujcky.film.popisFilmu}</p>
                         <img src={detailyPujcky.film.obrazekFilmu} alt="Obrazek filmu" sizes="" srcSet="" />
-                    </div>
+                    </div> */}
                     <button
                         className="acheive-pujcka"
                         onClick={() => dokoncitPujcku(detailyPujcky.id)}>Dokončit půjčku

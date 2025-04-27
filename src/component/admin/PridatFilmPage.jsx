@@ -92,7 +92,7 @@ const PridatFilmPage = () => {
                 
                 setTimeout(() => {
                     setSuccess('');
-                    navigate('/admin/manage-films');
+                    navigate('/admin/sprava-filmu');
                 }, 3000);
             }
         } catch (error) {

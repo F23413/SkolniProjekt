@@ -52,17 +52,17 @@ const MojePujckyPage = () => {
                     <br />
                     <h3>Detaily uživatele</h3>
                     <div>
-                        {/* <p>Jméno: {detailyPujcovani.uzivatelPujcuje.jmeno}</p>
+                        <p>Jméno: {detailyPujcovani.uzivatelPujcuje.jmeno}</p>
                         <p>Email {detailyPujcovani.uzivatelPujcuje.email}</p>
-                        <p>Telefonní číslo: {detailyPujcovani.uzivatelPujcuje.telCislo}</p> */}
+                        <p>Telefonní číslo: {detailyPujcovani.uzivatelPujcuje.telCislo}</p> 
                     </div>
                     <br />
                     <hr />
                     <br />
                     <h3>Detaily filmu</h3>
                     <div>
-                        {/* <p> Žánr filmu: {detailyPujcovani.filmPujceny.zanrFilmu}</p>
-                        <img src={detailyPujcovani.filmPujceny.obrazekFilmu} alt="obrazek filmu" sizes="" srcSet="" /> */}
+                        <p> Žánr filmu: {detailyPujcovani.filmPujceny.zanrFilmu}</p>
+                        <img src={detailyPujcovani.filmPujceny.obrazekFilmu} alt="obrazek filmu" sizes="" srcSet="" />
                     </div>
                 </div >
             )}

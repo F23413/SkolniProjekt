@@ -42,21 +42,29 @@ const ManagefilmPage = () => {
     setselectedFilmType(e.target.value);
     filterfilmy(e.target.value);
   };
+  const filterfilmy = (term) => {
+    if (!Array.isArray(filmy)) {
+      setFiltrovaneFilmy([]);
+        return;
+    }
 
-  const filterfilmy = (type) => {
-    if (type === '') {
+    if (term === '') {
       setFiltrovaneFilmy(filmy);
     } else {
-      const filtered = filmy.filter((film) => film.filmType === type);
-      setFiltrovaneFilmy(filtered);
+        const filtrovane = filmy.filter((film) =>
+            film.kodPotvrzeniZapujceni &&
+            film.kodPotvrzeniZapujceni.toLowerCase().includes(term.toLowerCase())
+        );
+        setFiltrovaneFilmy(filtrovane);
     }
-    setCurrentPage(1); // Reset to first page after filtering
-  };
+    setCurrentPage(1);
+};
+
 
   // Pagination
   const indexPoslednihoFilmu = currentPage * filmyPerPage;
   const indexPrvnihoFilmu = indexPoslednihoFilmu - filmyPerPage;
-  const currentFilmy = filtrovaneFilmy.slice(indexPrvnihoFilmu, indexPoslednihoFilmu);
+  const currentFilmy = (filtrovaneFilmy || []).slice(indexPrvnihoFilmu, indexPoslednihoFilmu);
 
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -85,7 +93,7 @@ const ManagefilmPage = () => {
 
       <Pagination
         filmyPerPage={filmyPerPage}
-        totalfilmy={filtrovaneFilmy.length}
+        totalfilmy={(filtrovaneFilmy || []).length}
         currentPage={currentPage}
         paginate={paginate}
       />

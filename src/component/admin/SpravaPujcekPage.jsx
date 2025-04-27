@@ -15,7 +15,7 @@ const SpravaPujcekPage = () => {
         const fetchPujcky = async () => {
             try {
                 const odpoved = await ApiService.getVsechnyPujcky();
-                const vsechnyPujcky = odpoved.pujckyList;
+                const vsechnyPujcky = odpoved.seznamPujcek;
                 setPujcky(vsechnyPujcky);
                 setFilteredPujcky(vsechnyPujcky);
             } catch (error) {
@@ -31,24 +31,31 @@ const SpravaPujcekPage = () => {
     }, [searchTerm, pujcky]);
 
     const filterPujcky = (term) => {
+        if (!Array.isArray(pujcky)) {
+            setFilteredPujcky([]);
+            return;
+        }
+    
         if (term === '') {
             setFilteredPujcky(pujcky);
         } else {
-            const filtrovane = pujcky.filter((pujcky) =>
-                pujcky.kodPotvrzeniZapujceni && pujcky.kodPotvrzeniZapujceni.toLowerCase().includes(term.toLowerCase())
+            const filtrovane = pujcky.filter((pujcka) =>
+                pujcka.kodPotvrzeniZapujceni &&
+                pujcka.kodPotvrzeniZapujceni.toLowerCase().includes(term.toLowerCase())
             );
             setFilteredPujcky(filtrovane);
         }
         setCurrentPage(1);
     };
+    const indexPosledniPujcky = currentPage * pujckyPerPage;
+    const indexPrvniPujcky = indexPosledniPujcky - pujckyPerPage;
+    const currentPujcky = (filteredPujcky || []).slice(indexPrvniPujcky, indexPosledniPujcky);
 
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
+        console.log("Metoda zavolána");
+        console.log("Půjčky: " + filteredPujcky.length);
     };
-
-    const indexPosledniPujcky = currentPage * pujckyPerPage;
-    const indexPrvniPujcky = indexPosledniPujcky - pujckyPerPage;
-    const currentPujcky = filteredPujcky.slice(indexPrvniPujcky, indexPosledniPujcky);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -63,14 +70,15 @@ const SpravaPujcekPage = () => {
                     onChange={handleSearchChange}
                     placeholder="Zadejte číslo půjčky"
                 />
+
             </div>
 
             <div className="pujcka-results">
                 {currentPujcky.map((pujcka) => (
                     <div key={pujcka.id} className="pujcka-result-item">
                         <p><strong>Kód půjčky:</strong> {pujcka.kodPotvrzeniZapujceni}</p>
-                        <p><strong>Datum půjčení:</strong> {pujcka.checkInDate}</p>
-                        <p><strong>Datum vrácení:</strong> {pujcka.checkOutDate}</p>
+                        <p><strong>Datum půjčení:</strong> {pujcka.datumPujceni}</p>
+                        <p><strong>Datum vrácení:</strong> {pujcka.datumVraceni}</p>
                         <p><strong>Počet půjčených filmů:</strong> {pujcka.pocetMomentalnePujcenychFilmu}</p>
                         <button
                             className="edit-film-button"
@@ -82,7 +90,7 @@ const SpravaPujcekPage = () => {
 
             <Pagination
                 filmyPerPage={pujckyPerPage}
-                totalfilmy={filteredPujcky.length}
+                totalfilmy={(filteredPujcky || []).length}
                 currentPage={currentPage}
                 paginate={paginate}
             />

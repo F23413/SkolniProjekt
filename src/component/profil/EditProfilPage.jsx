@@ -11,7 +11,7 @@ const EditProfilPage = () =>{
         const fetchProfilUzivatele = async ()=>{
             try{
                 const odpoved = await ApiService.getProfilZalogovanehoUzivatele();
-                setUzivatel(odpoved.uzivatel);
+                setUzivatel(odpoved.uzivatelPujcuje);
             }catch (error) {
                 setError(error.zprava);
             }

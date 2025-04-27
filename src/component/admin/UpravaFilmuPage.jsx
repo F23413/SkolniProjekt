@@ -34,10 +34,10 @@ const UpravaFilmuPage = () => {
     }, [filmId]);
 
     const handleChange = (e) => {
-        const { jmeno, value } = e.target;
+        const { name, value } = e.target;
         setFilmDetails(prevState => ({
             ...prevState,
-            [jmeno]: value,
+            [name]: value,
         }));
     };
 
@@ -120,7 +120,7 @@ const UpravaFilmuPage = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label>film Type</label>
+                    <label>Žánr filmu</label>
                     <input
                         type="text"
                         name="zanrFilmu"
@@ -129,7 +129,7 @@ const UpravaFilmuPage = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label>film Price</label>
+                    <label>Cena filmu</label>
                     <input
                         type="text"
                         name="cenaFilmu"
@@ -138,7 +138,7 @@ const UpravaFilmuPage = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label>film Description</label>
+                    <label>Popis filmu</label>
                     <textarea
                         name="popisFilmu"
                         value={filmDetails.popisFilmu}

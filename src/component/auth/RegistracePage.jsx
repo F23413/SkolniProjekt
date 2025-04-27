@@ -16,8 +16,8 @@ function RegistracePage() {
     const [successMessage, setSuccessMessage] = useState('');
 
     const handleInputChange = (e) => {
-        const { jmeno, value } = e.target;
-        setFormData({ ...formData, [jmeno]: value });
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
     };
 
     const validateForm = () => {
@@ -76,11 +76,11 @@ function RegistracePage() {
                     <input type="email" name="email" value={formData.email} onChange={handleInputChange} required />
                 </div>
                 <div className="form-group">
-                    <label>Phone Number:</label>
+                    <label>Telefonní číslo:</label>
                     <input type="text" name="telCislo" value={formData.telCislo} onChange={handleInputChange} required />
                 </div>
                 <div className="form-group">
-                    <label>heslo:</label>
+                    <label>Heslo:</label>
                     <input type="password" name="heslo" value={formData.heslo} onChange={handleInputChange} required />
                 </div>
                 <button type="submit">Zaregistrovat se</button>

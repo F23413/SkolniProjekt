@@ -5,7 +5,7 @@ import DatePicker from 'react-datepicker';
 
 const FilmuDetailyPage = () => {
     const navigate = useNavigate(); // přístup k navigační funkci
-    const { filmId } = useParams(); // id filmu z URL parametru
+    const { idFilmu } = useParams(); // id filmu z URL parametru
     const [filmDetaily, setFilmDetaily] = useState(null);
     const [isLoading, setIsLoading] = useState(true); // trakce stavu načítání
     const [error, setError] = useState(null);
@@ -16,6 +16,7 @@ const FilmuDetailyPage = () => {
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [idUzivatele, setIdUzivatele] = useState('');
     const [showZpravu, setShowZpravu] = useState(false); // proměnná stavu pro kontrolu viditelnosti zpráv
+    const [ShowZpravu201, setShowZpravu201] = useState(false);
     const [kodPotvrzeni, setKodPotvrzeni] = useState(''); // proměnná stavu pro kód potvrzení zapůjčení
     const [errorMessage, setErrorMessage] = useState(''); // proměnná stavu pro zprávy o chybách
 
@@ -23,10 +24,10 @@ const FilmuDetailyPage = () => {
         const fetchData = async () => {
             try {
                 setIsLoading(true);
-                const odpoved = await ApiService.getFilmDleId(filmId);
-                setFilmDetaily(odpoved.film);
+                const odpoved = await ApiService.getFilmDleId(idFilmu);
+                setFilmDetaily(odpoved.filmPujceny);
                 const profilUzivatele = await ApiService.getProfilZalogovanehoUzivatele();
-                setIdUzivatele(profilUzivatele.uzivatel.id);
+                setIdUzivatele(profilUzivatele.uzivatelPujcuje.id);
             } catch (error) {
                 setError(error.odpoved?.data?.zprava || error.zprava);
             } finally {
@@ -34,7 +35,7 @@ const FilmuDetailyPage = () => {
             }
         };
         fetchData();
-    }, [filmId]);// Znovu spustit efekt při změně filmId
+    }, [idFilmu]);// Znovu spustit efekt při změně filmId
 
     const handleConfirmPujcku = async () => {
         if (!datumPujceni || !datumVraceni) { // kontrola jestli jsou vybrané data půjčení a vrácení
@@ -63,22 +64,20 @@ const FilmuDetailyPage = () => {
     };
 
     const prijetiPujcky = async () => {
+        const formatDate = (date) => {
+            if (!date) return null;
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0'); // měsíce jsou 0–11
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+          };
         try {
             //zajištění datumPujceni a datumVraceni jsou Date objekty
             const startDatum = new Date(datumPujceni);
             const endDatum = new Date(datumVraceni);
 
-            // log dat pro debugging
-            console.log("Původní datum půjčení: ", startDatum);
-            console.log("Původní datum vrácení: ", endDatum);
-
-
-            const formatovaneDatumPujceni = new Date(startDatum.getTime() - (startDatum.getTimezoneOffset() * 60000)).toISOString().split('-')[0];
-            const formatovaneDatumVraceni = new Date(endDatum.getTime() - (endDatum.getTimezoneOffset() * 60000)).toISOString().split('-')[0];
-
-            // log dat pro debugging
-            console.log("Formátované datum půjčení: ", formatovaneDatumPujceni);
-            console.log("Formátované datum vrácení: ", formatovaneDatumVraceni);
+            const formatovaneDatumPujceni = formatDate(startDatum);
+            const formatovaneDatumVraceni = formatDate(endDatum);
 
             // objekt pro pujcky
             const pujcka = {
@@ -88,14 +87,23 @@ const FilmuDetailyPage = () => {
             };
             console.log(pujcka);
             console.log(datumVraceni);
-
+            
             //tvorba pujcky
-            const odpoved = await ApiService.pujckaFilmu(filmId, idUzivatele, pujcka);
+            const odpoved = await ApiService.pujckaFilmu(idFilmu, idUzivatele, pujcka);
+            console.log(odpoved.kodStavu);
             if (odpoved.kodStavu === 200) {
                 setKodPotvrzeni(odpoved.kodPotvrzeniZapujceni);
                 setShowZpravu(true);
                 setTimeout(() => {
                     setShowZpravu(false);
+                    navigate('/filmy');
+                }, 10000);
+            }
+            if (odpoved.kodStavu === 201){
+                setShowZpravu201(true);
+                console.log("201 nastavená");
+                setTimeout(() => {
+                    setShowZpravu201(false);
                     navigate('/filmy');
                 }, 10000);
             }
@@ -125,6 +133,13 @@ const FilmuDetailyPage = () => {
                 showZpravu && (
                     <p className='pujcka-success-message'>
                         Půjčení proběhlo úspěšně! Kód potvrzení: {kodPotvrzeni}.
+                    </p>
+                )
+            }
+            {
+                ShowZpravu201 && (
+                    <p className='error-message'>
+                        Film si nelze půjčit, protože se časově překrývá s jinou výpůjčkou.
                     </p>
                 )
             }
@@ -159,7 +174,7 @@ const FilmuDetailyPage = () => {
             )}
             <div className='pujcka-info'>
                 <button className='pujcit-now-button' onClick={() => setShowDatePicker(true)}>Vypůjčit</button>
-                <button className='go-back-button' onClick={() => setShowDatePicker(false)}>Zpátky</button>
+                <button className='go-back-button' onClick={() => navigate(`/filmy`)}>Zpátky</button>
                 {showDatePicker && (
                     <div className="date-picker-container">
                         <DatePicker

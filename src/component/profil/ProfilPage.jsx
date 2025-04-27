@@ -11,8 +11,8 @@ const ProfilPage = () => {
         const fetchProfilUzivatele = async () => {
             try {
                 const odpoved = await ApiService.getProfilZalogovanehoUzivatele();
-                const uzivatelPlusPujcky = await ApiService.getPujckyUzivateleDleId(odpoved.uzivatel.id);
-                setUzivatel(uzivatelPlusPujcky.uzivatel);
+                const uzivatelPlusPujcky = await ApiService.getPujckyUzivateleDleId(odpoved.uzivatelPujcuje.id);
+                setUzivatel(uzivatelPlusPujcky.uzivatelPujcuje);
             } catch (error) {
                 setError(error.zprava);
             }
@@ -30,7 +30,7 @@ const ProfilPage = () => {
     };
     return(
         <div className="profile-page">
-            {uzivatel && <h2>Welcome, {uzivatel.jmeno}</h2>}
+            {uzivatel && <h2>Vítejte, {uzivatel.jmeno}</h2>}
             <div className="profile-actions">
                 <button className="edit-profile-button" onClick={handleEditProfil}>Upravit profil</button>
                 <button className="logout-button" onClick={handleLogout}>Logout</button>
@@ -47,14 +47,15 @@ const ProfilPage = () => {
                 <h3>Historie půjčování</h3>
                 <div className="pujcka-list">
                     {uzivatel && uzivatel.pujcky.length > 0 ? (
-                        uzivatel.pujcky.map((pujcky) => (
-                            <div key={pujcky.id} className="pujcka-item">
-                                <p><strong>Kód půjčky:</strong> {pujcky.kodPotvrzeniZapujceni}</p>
-                                <p><strong>Datum půjčení:</strong> {pujcky.datumPujceni}</p>
-                                <p><strong>Datum vrácení:</strong> {pujcky.datumVraceni}</p>
-                                <p><strong>Počet půjčených filmů:</strong> {pujcky.pocetMomentalnePujcenychFilmu}</p>
-                                <p><strong>Žánr filmu:</strong> {pujcky.film.zanrFilmu}</p>
-                                <img src={pujcky.film.obrazekFilmu} alt="film" className="film-photo" />
+                        uzivatel.pujcky.map((pujcka) => (
+                            <div key={pujcka.id} className="pujcka-item">
+                                <p><strong>Kód půjčky:</strong> {pujcka.kodPotvrzeniZapujceni}</p>
+                                <p><strong>Název půjčeného filmu:</strong> {pujcka.filmPujceny.nazevFilmu}</p>
+                                <p><strong>Datum půjčení:</strong> {pujcka.datumPujceni}</p>
+                                <p><strong>Datum vrácení:</strong> {pujcka.datumVraceni}</p>
+                                <p><strong>Počet půjčených filmů:</strong> {pujcka.pocetMomentalnePujcenychFilmu}</p>
+                                <p><strong>Žánr filmu:</strong> {pujcka.filmPujceny.zanrFilmu}</p>
+                                <img src={pujcka.filmPujceny.obrazekFilmu} alt="film" className="film-photo" />
                             </div>
                         ))
                     ) : (

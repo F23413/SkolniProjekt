@@ -22,7 +22,7 @@ const FilmResult = ({filmSearchResults})=>{
                             {isAdmin ?(
                                 <button className="edit-film-button" onClick={()=> navigate(`/admin/edit-film/${film.id}`)}>Upravit data filmu</button>
                             ):(
-                                <button className="pujcit-now-button" onClick={()=> navigate(`/film-details-pujcit/${film.id}`)}>Zobrazit nebo zapůjčit film</button>
+                                <button className="pujcit-now-button" onClick={()=> navigate(`/pujcky_filmu/detaily-pujceni-film/${film.id}`)}>Zobrazit nebo zapůjčit film</button>
                             )}
                         </div>
                     </div>
