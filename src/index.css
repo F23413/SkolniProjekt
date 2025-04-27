@@ -865,7 +865,7 @@ p {
 
 
 /* General Styling */
-.pujckas-container {
+.pujcky-container {
   max-width: 900px;
   margin: 20px auto;
   padding: 20px;
@@ -1011,12 +1011,12 @@ h2 {
 }
 
 .profile-details,
-.pujckas-section {
+.pujcky-section {
   margin-bottom: 20px;
 }
 
 .profile-details h3,
-.pujckas-section h3 {
+.pujcky-section h3 {
   margin-bottom: 10px;
 }
 
