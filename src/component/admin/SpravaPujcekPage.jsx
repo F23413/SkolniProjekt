@@ -48,7 +48,7 @@ const SpravaPujcekPage = () => {
 
     const indexPosledniPujcky = currentPage * pujckyPerPage;
     const indexPrvniPujcky = indexPosledniPujcky - pujckyPerPage;
-    const currentpujcky = filteredPujcky.slice(indexPrvniPujcky, indexPosledniPujcky);
+    const currentPujcky = filteredPujcky.slice(indexPrvniPujcky, indexPosledniPujcky);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -66,7 +66,7 @@ const SpravaPujcekPage = () => {
             </div>
 
             <div className="pujcka-results">
-                {currentpujcky.map((pujcka) => (
+                {currentPujcky.map((pujcka) => (
                     <div key={pujcka.id} className="pujcka-result-item">
                         <p><strong>Kód půjčky:</strong> {pujcka.kodPotvrzeniZapujceni}</p>
                         <p><strong>Datum půjčení:</strong> {pujcka.checkInDate}</p>
@@ -75,7 +75,7 @@ const SpravaPujcekPage = () => {
                         <button
                             className="edit-film-button"
                             onClick={() => navigate(`/admin/edit-pujcka/${pujcka.kodPotvrzeniZapujceni}`)}
-                        >Manage pujcka</button>
+                        >Správa půjčky</button>
                     </div>
                 ))}
             </div>
