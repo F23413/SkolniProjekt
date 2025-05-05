@@ -21,11 +21,11 @@ import java.util.List;
 @Service
 public class FilmuSluzba implements IFilmuSluzba {
     @Autowired
-    private FilmRepository filmRepository;
+    public FilmRepository filmRepository;
     @Autowired
     private PujckaRepository pujckaRepository;
     @Autowired
-    private AwsS3Sluzba awsS3Sluzba;
+    public AwsS3Sluzba awsS3Sluzba;
     @Override
     public Odpoved pridejNovyFilm(MultipartFile obrazekFilmu, BigDecimal cenaFilmu, String zanrFilmu, String nazevFilmu, String popisFilmu) {
         Odpoved odpoved = new Odpoved();

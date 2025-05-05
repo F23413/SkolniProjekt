@@ -42,14 +42,14 @@ public class FilmController {
     }
 
     @GetMapping("/vse")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Odpoved> getVsechnyFilmy(){
         Odpoved odpoved = filmuSluzba.getVsechnyFilmy();
         return ResponseEntity.status(odpoved.getKodStavu()).body(odpoved);
     }
 
     @GetMapping("/zanry")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public List<String> getZanryFilmu(){
         return filmuSluzba.getVsechnyZanry();
     }
@@ -82,7 +82,7 @@ public class FilmController {
         return ResponseEntity.status(odpoved.getKodStavu()).body(odpoved);
     }
 
-    @GetMapping("/update/{filmId}")
+    @PutMapping("/update/{filmId}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Odpoved> updateFilm( @PathVariable Long filmId,
             @RequestParam(value = "foto", required = false)MultipartFile foto,

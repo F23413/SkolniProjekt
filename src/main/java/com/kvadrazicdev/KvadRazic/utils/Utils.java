@@ -59,7 +59,6 @@ public class Utils {
         pujckaDTO.setDatumVraceni(pujcka.getDatumVraceni());
         pujckaDTO.setPocetMomentalnePujcenychFilmu(pujcka.getPocetMomentalnePujcenychFilmu());
         pujckaDTO.setKodPotvrzeniZapujceni(pujcka.getKodPotvrzeniZapujceni());
-
         return pujckaDTO;
     }
 

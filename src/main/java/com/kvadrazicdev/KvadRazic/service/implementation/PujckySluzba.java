@@ -54,7 +54,7 @@ public class PujckySluzba implements IPujckySluzba {
             odpoved.setKodPotvrzeniZapujceni(kodPotvrzeniZapujceni);
 
         }catch (Vyjimka e){
-            odpoved.setKodStavu(404); // not found
+            odpoved.setKodStavu(201); // not found
             odpoved.setZprava(e.getMessage());
         }catch (Exception e){
             odpoved.setKodStavu(500); // server error
@@ -90,7 +90,7 @@ public class PujckySluzba implements IPujckySluzba {
         Odpoved odpoved = new Odpoved();
         try{
             Pujcka pujcka = pujckaRepository.findByKodPotvrzeniZapujceni(kodPotvrzeniZapujceni).orElseThrow(()-> new Vyjimka("Pujcka nebyla nalezena"));
-            PujckaDTO pujckaDTO = Utils.mapPujckaEntituNaPujckaDTO(pujcka);
+            PujckaDTO pujckaDTO = Utils.mapPujckaEntituNaPujckaDTOPlusPujcenyFilm(pujcka, true);
             odpoved.setKodStavu(200);
             odpoved.setZprava("Půjčky úspěšně nalezeny");
             odpoved.setOPujcce(pujckaDTO);

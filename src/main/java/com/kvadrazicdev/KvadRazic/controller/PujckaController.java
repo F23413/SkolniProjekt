@@ -23,14 +23,14 @@ public class PujckaController {
     }
 
     @GetMapping("/vsechny-pujcky")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Odpoved> getVsechnyPujcky(){
         Odpoved odpoved = pujckySluzba.getVsechnyPujcky();
         return ResponseEntity.status(odpoved.getKodStavu()).body(odpoved);
     }
 
     @GetMapping("/get-by-kod-potvrzeni/{kodPotvrzeni}")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Odpoved> getPujckuDleKodPotvrzeni(@PathVariable String kodPotvrzeni){
         Odpoved odpoved = pujckySluzba.findPujckuDleKodPotvrzeni(kodPotvrzeni);
         return ResponseEntity.status(odpoved.getKodStavu()).body(odpoved);

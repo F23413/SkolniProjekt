@@ -9,7 +9,7 @@ class KvadRazicApplicationTests {
 	//@Mock
 	//private AppUserRepository;
 	//@InjectMocks
-	//private AuthService authService;
+	//private AuthService gauthService;
 	@Test
 	void contextLoads() {
 	}

@@ -73,7 +73,7 @@ public class Odpoved {
         this.filmPujceny = filmPujceny;
     }
 
-    public PujckaDTO getoPujcce() {
+    public PujckaDTO getOPujcce() {
         return oPujcce;
     }
 
